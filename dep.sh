@@ -6,8 +6,4 @@ JEKYLL_ENV=production bundle exec jekyll build
 # Note: on linux, replace md5 with md5sum
 tar c . | md5sum > CHECKSUM
 # Sync all the built files to a bucket on S3.
-pushd _site
-aws s3 sync --exact-timestamps --delete . s3://happyislet-website/
-popd
-aws s3 sync --exact-timestamps --delete s3://happyislet-website/ /home/ubuntu/happyislet
-
+cp -rf _site/* /home/ubuntu/happyislet/

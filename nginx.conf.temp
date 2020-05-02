@@ -61,6 +61,17 @@ http {
 	include /etc/nginx/conf.d/*.conf;
 	include /etc/nginx/sites-enabled/*;
 }
+
+server {
+    listen 80 happyislet.com;
+    root /home/ubuntu/happyislet;
+    index index.php index.html index.htm index.nginx-debian.html;
+    server_name www.happyislet.com
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+ }   
 #mail {
 #	# See sample authentication script at:
 #	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
